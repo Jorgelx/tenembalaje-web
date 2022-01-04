@@ -1,0 +1,17 @@
+
+<app-header></app-header>
+<div class="row">
+
+    <div class="col-md-8" *ngIf="isLogged">
+        <div>
+            <app-product-list></app-product-list>
+        </div>
+    </div>
+
+    <div class="col-md-12" *ngIf="!isLogged">
+        <div>
+            <app-product-list></app-product-list>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

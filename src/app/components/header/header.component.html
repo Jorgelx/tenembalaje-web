@@ -1,0 +1,60 @@
+    <nav class="navbar navbar-expand-lg navbar-light shadow border-bottom border-dark">
+        <div class="container"> <button class="navbar-toggler navbar-toggler-right border-0 p-0" type="button"
+                data-toggle="collapse" data-target="#navbar8">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="row">
+                <div class="collapse show navbar-collapse" id="navbar8">
+                    <div class="col-md-4">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"> <a class="nav-link" routerLink="/">Inicio </a> </li>
+                            <li class="nav-item"> <a class="nav-link" (click)="productos()" data-toggle="collapse"
+                                    data-target="#navbarNavDropdown" onmouseover=""
+                                    style="cursor: pointer;">Productos</a> </li>
+                            <li class="nav-item"> <a class="nav-link" (click)="contacto()" onmouseover=""
+                                    style="cursor: pointer;">
+                                    Contacto </a> </li>
+                            <li class="nav-item" *ngIf="isLogged"> <a class="nav-link" (click)="user()" onmouseover=""
+                                    style="cursor: pointer;"> Usuario</a></li>
+                            <li class="nav-item" *ngIf="!isLogged"> <a class="nav-link" routerLink="/registro"
+                                    onmouseover="" style="cursor: pointer;">Registrate</a></li>
+                        </ul>
+                    </div>
+                    <div class="animate__animated animate__flip col-md-4"><a routerLink="/"><img
+                                src="../../assets/img/logo.png" class=' tenembalaje' width="100%" height="100%"></a>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item mx-1"> <a class="nav-link" href="#">
+                                    <i class="fa fa-twitter fa-fw fa-lg text-info"></i>
+                                </a> </li>
+                            <li class="nav-item mx-1"> <a class="nav-link"
+                                    href="https://www.instagram.com/tenembalaje/">
+                                    <i class="fa fa-instagram fa-fw fa-lg text-danger"></i>
+                                </a> </li>
+                            <li class="nav-item mx-1"> <a class="nav-link" href="https://wa.me/+34722481607">
+                                    <i class="fa fab fa-whatsapp fa-fw fa-lg text-success"></i>
+                                </a> </li>
+                            <li class="nav-item"> <a class="nav-link">
+                                    <div class="col-md-12"><i style="cursor:pointer;" class="flag flag-es"
+                                            (click)="changeLang('es')"></i><i style="cursor:pointer;"
+                                            class="flag flag-gb" (click)="changeLang('en')"></i></div>
+                                </a> </li>
+                            <li *ngIf="isAdmin" class="nav-item mx-1" (click)="user()"> <a class="nav-link">
+                                    <i class="fa fa-cog fa-spin fa-fw fa-lg"></i>
+                                </a> </li>
+                            <li class="nav-item" *ngIf="!isLogged">
+                                <a class="nav-link" routerLink="/login"><i
+                                        class="fas fa-sign-in-alt text-success"></i></a>
+                            </li>
+                            <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
+                                <a class="nav-link" style="cursor: pointer;"><i
+                                        class="fas fa-door-open text-danger"></i></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
