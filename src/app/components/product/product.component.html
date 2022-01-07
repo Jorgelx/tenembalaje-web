@@ -1,17 +1,13 @@
+<div class="card text-center mt-3" style="margin-bottom: 3;">
+  <img [src]="product.img"
+  class="card-img-top" alt="Camiseta Elche">
+  <div class="card-body">
+    <h5 class="card-title">{{product.nombre}}</h5>
+    <p class="card-text">{{product.descripcion}}</p>
+    <p class="card-text">Precio: {{product.precio}}€</p>
 
-<app-header></app-header>
-<div class="row">
-
-    <div class="col-md-8" *ngIf="isLogged">
-        <div>
-            <app-product-list></app-product-list>
-        </div>
-    </div>
-
-    <div class="col-md-12" *ngIf="!isLogged">
-        <div>
-            <app-product-list></app-product-list>
-        </div>
-    </div>
+   <button class="btn btn-success" (click)="addToCart()">
+    <i class="fa fa-shopping-cart"></i>
+      Añadir al carrito</button>
+  </div>
 </div>
-<app-footer></app-footer>

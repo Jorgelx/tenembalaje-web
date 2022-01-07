@@ -1,1 +1,43 @@
-<p>carrito works!</p>
+<ngx-spinner></ngx-spinner>
+<div *ngIf="cartItems.length < 1">
+  <div class="alert alert-info text-center">
+    <h4>Tu carrito esta vacio</h4>
+  </div>
+</div>
+
+<div *ngIf="cartItems.length > 0">
+  <div class="alert alert-info text-center">
+    <h4>Carrito</h4>
+  </div>
+  <div class="text-center">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of cartItems; index as i">
+        <div class="row">
+          <div class="col-md-10">
+          <app-carrito-item [cartItem]="item"></app-carrito-item>
+          </div>
+          <div class="col-md-2">
+            <i class="fa fa-trash" (click)="deleteItem(i)" aria-hidden="true"></i>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="alert alert-warning text-center" style="margin-top: 3%;">
+    <h4><strong>Total:</strong> {{total}} €</h4>
+  </div>
+
+  <div class="text-center" style="margin-top: 3%;">
+  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+  </div>
+
+  <div class="text-center mb-3" style="margin-top: 3%;">
+    <button class="btn btn-outline-danger btn-block text-center" (click) = "emptyCart()">
+      <i class="fas fa-ban"> Vaciar Carrito </i>
+    </button>
+
+
+
+  </div>
+
+</div>
