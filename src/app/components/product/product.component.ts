@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductComponent implements OnInit {
   @Input()
-  product!: Product;
+  product: Product;
   isAdmin = false;
 
   constructor(

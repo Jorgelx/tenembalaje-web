@@ -1,4 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,13 +12,16 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { CarritoItemComponent } from './components/carrito-item/carrito-item.component';
 import { ModalComponent } from './components/modal/modal.component';
-
+import { ProductViewComponent } from './components/product-view/product-view.component';
+import { LoginComponent } from './components/login/login.component';
 //external
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductViewComponent } from './components/product-view/product-view.component';
+import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { RegistroComponent } from './components/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -30,16 +34,23 @@ import { ProductViewComponent } from './components/product-view/product-view.com
     CarritoComponent,
     CarritoItemComponent,
     ModalComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    LoginComponent,
+    RegistroComponent,
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
     NgxPayPalModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-bottom-right'
+    })
 
   ],
   providers: [],
