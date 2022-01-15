@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,27 @@ export class HeaderComponent implements OnInit {
 
   isLogged = false;
   isAdmin = false;
+  nombreUsuario: string;
+  roles: string[];
 
   constructor(
+    private tokenService: TokenService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+      this.nombreUsuario = sessionStorage.getItem("AuthUserName");
+    } else {
+      this.isLogged = false;
+    }
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if(rol === 'ROLE_ADMIN') {
+      this.isAdmin =true;
+      }
+    });
   }
 
   contacto() {
@@ -31,8 +47,8 @@ export class HeaderComponent implements OnInit {
    // this.translate.use(lang);
   }
   onLogOut(): void {
-    //this.tokenService.logOut();
-   // window.location.reload();
+    this.tokenService.logOut();
+    window.location.reload();
   }
 
 }
