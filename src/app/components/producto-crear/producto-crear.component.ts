@@ -8,11 +8,11 @@ import { ImagenService } from 'src/app/services/imagen.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-crear-bolsa',
-  templateUrl: './crear-bolsa.component.html',
-  styleUrls: ['./crear-bolsa.component.css']
+  selector: 'app-producto-crear',
+  templateUrl: './producto-crear.component.html',
+  styleUrls: ['./producto-crear.component.css']
 })
-export class CrearBolsaComponent implements OnInit {
+export class ProductoCrearComponent implements OnInit {
   @ViewChild('imagenInputFile', {static: false}) imagenFile: ElementRef;
 
   imagenSubida: Imagen = null;
