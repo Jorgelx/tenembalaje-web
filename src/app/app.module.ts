@@ -14,6 +14,10 @@ import { CarritoItemComponent } from './components/carrito-item/carrito-item.com
 import { ModalComponent } from './components/modal/modal.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { ProductoCrearComponent } from './components/producto-crear/producto-crear.component';
+//interceptor
+import { interceptorProvider } from './interceptor/prod-interceptor.service';
 //external
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,8 +25,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { RegistroComponent } from './components/registro/registro.component';
-import { ProductoCrearComponent } from './components/producto-crear/producto-crear.component';
+
+
 
 @NgModule({
   declarations: [
@@ -55,7 +59,7 @@ import { ProductoCrearComponent } from './components/producto-crear/producto-cre
     })
 
   ],
-  providers: [],
+  providers: [interceptorProvider],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
