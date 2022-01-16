@@ -24,5 +24,9 @@ export class ProductService {
   public listTipo(tipo:string): Observable<Product[]> {
     return this.httpClient.get<Product[]>(this.url + `product/tipo/`+tipo)
   }
+
+  public save(producto: Product): Observable<any>{
+    return this.httpClient.post<any>(this.url+ 'product/save/', producto);
+  }
 }
 

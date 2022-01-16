@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ProductoCrearComponent } from './components/producto-crear/producto-crear.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     ProductViewComponent,
     LoginComponent,
     RegistroComponent,
+    ProductoCrearComponent,
   ],
   imports: [
     RouterModule,

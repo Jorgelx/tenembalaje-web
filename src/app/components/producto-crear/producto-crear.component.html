@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-md-4 mx-auto">
+          <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+              <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre"
+                  [(ngModel)]="nombre" required>
+              </div>
+              <div class="form-group">
+                  <label for="precio">Precio</label>
+                  <input type="number" class="form-control" id="precio" name="precio"
+                  [(ngModel)]="precio" required>
+              </div>
+              <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion"
+                [(ngModel)]="descripcion">
+            </div>
+            <div class="form-group">
+              <label for="tipo">tipo</label>
+              <input type="text" class="form-control" id="tipo" name="tipo"
+              [(ngModel)]="tipo">
+          </div>
+          <div class="form-group">
+           <!-- <label for="img">Imagen</label>
+            <input type="file" class="form-control" id="img" name="img"
+            [(ngModel)]="img"> -->
+
+            <!---->
+            <label class="text" for="imagen">Elige una imagen</label>
+            <input type="file" class="text" id="imagen" #imagenInputFile
+            (change)="onFileChange($event)" accept="image/png, image/jpeg, image/gif">
+
+            <!---->
+        </div>
+        <div *ngIf="imagen" class="mt-5">
+          <h5>Vista Previa:</h5>
+          <div>
+              <img class="image-thumbnail" style="max-width: 100px" [src]="imagenMin">
+          </div>
+      </div>
+              <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Crear</button>
+          </form>
+          <br>
+          <button class="btn btn-outline-primary btn-block" routerLink="/productos">
+            <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+      </div>
+
+  </div>
+</div>
