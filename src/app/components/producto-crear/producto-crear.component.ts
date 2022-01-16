@@ -41,7 +41,6 @@ export class ProductoCrearComponent implements OnInit {
   onCreate(): void {
     if (this.imagen != null) {
       this.onUpload();
-      //(nombre: string, nombreEng:string, tipo: string,precio: number,descripcion:string, descripcionEng: string, img: string,enVenta:boolean){
         const producto = new Product(this.nombre, this.nombreEng, this.tipo, this.precio, this.descripcion, this.descripcionEng, this.imagenSubida.imagenUrl, this.enVenta);
       this.servicio.save(producto).subscribe(
         data => {
@@ -49,14 +48,14 @@ export class ProductoCrearComponent implements OnInit {
             timeOut: 3000, positionClass: 'toast-top-center'
           });
 
-          this.router.navigate(['/productos']);
+          this.router.navigate(['/product']);
         },
         err => {
           this.toastr.error(err.error.mensaje, 'Fail', {
             timeOut: 3000,  positionClass: 'toast-top-center',
           });
 
-          this.router.navigate(['/productos']);
+          this.router.navigate(['/product']);
         }
       ); }
     else {
@@ -70,11 +69,11 @@ export class ProductoCrearComponent implements OnInit {
           this.router.navigate(['/productos']);
         },
         err => {
-          this.toastr.error(err.error.mensaje, 'Fail', {
+          this.toastr.error("Error subiendo el archivo", 'Error', {
             timeOut: 3000,  positionClass: 'toast-top-center',
           });
 
-          this.router.navigate(['/productos']);
+          this.router.navigate(['/product']);
         }
       );
     }

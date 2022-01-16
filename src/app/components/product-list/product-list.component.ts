@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Busqueda } from 'src/app/model/busqueda-dto';
 import { Product } from 'src/app/model/product';
 import { Tipo } from 'src/app/model/tipo';
@@ -20,6 +21,7 @@ export class ProductListComponent implements OnInit {
   tipos: Tipo[] = [];
 
   constructor(
+    private router: Router,
     private productService: ProductService
   ) { }
 
@@ -28,6 +30,10 @@ export class ProductListComponent implements OnInit {
     this.cargarTipos();
   }
 
+
+  crear(): void {
+    this.router.navigate(['/crear-producto']);
+  }
 
   loadProducts(): void {
     this.productService.list().subscribe(

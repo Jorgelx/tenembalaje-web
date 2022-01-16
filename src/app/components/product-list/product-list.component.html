@@ -5,6 +5,10 @@
     <option [ngValue]="tipo" *ngFor="let tipo of tipos">{{tipo.tipo}}</option>
   </select>
 </div>
+ <a
+  class="btn btn-primary text-white btn-lg" (click)="crear()">Crear producto</a>
+
+
     <div class="col-md-6" *ngFor='let product of products'>
     <app-product [product]="product"></app-product>
   </div>

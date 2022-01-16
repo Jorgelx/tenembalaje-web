@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
+import { ProductoCrearComponent } from './components/producto-crear/producto-crear.component';
 import { RegistroComponent } from './components/registro/registro.component';
 
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'product', component: ProductViewComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'registro' , component: RegistroComponent},
+  {path: 'crear-producto' , component: ProductoCrearComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
