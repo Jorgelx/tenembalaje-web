@@ -6,16 +6,24 @@
     </select>
   </div-->
 
-  <div class="animate__animated animate__fadeIn">
-     <button type="button" class="btn btn-light" style="margin: 9px;" *ngFor="let tipo of tipos"  (click)="cambiarProductos2(tipo)">{{tipo.tipo}}</button>
+  <div class="animate__animated animate__fadeIn mt-3">
+
+    <button type="button" class="target btn btn-light " style="margin: 9px;"
+    (click)="loadProducts()">Todos</button>
+
+    <button type="button" class="target btn btn-light " style="margin: 9px;" *ngFor="let tipo of tipos"
+      (click)="cambiarProductos2(tipo)">{{tipo.tipo}}</button>
   </div>
 
 
-  <div *ngIf="isAdmin">
-    <a class="btn btn-primary text-white btn-lg" (click)="crear()">Crear producto</a>
+  <div *ngIf="isAdmin" class="text-center">
+    <a class="btn btn-success text-white btn-lg" (click)="crear()">Crear producto</a>
   </div>
 
-  <div class="col-md-6" *ngFor='let product of products'>
-    <app-product [product]="product"></app-product>
-  </div>
+    <div class="col-md-4" *ngFor='let product of products'>
+      <app-product [product]="product"></app-product>
+    </div>
+
+
+
 </div>

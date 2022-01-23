@@ -22,6 +22,7 @@ export class ProductListComponent implements OnInit {
   tipos: Tipo[] = [];
   isAdmin = false;
   roles: string[];
+  isSelected = false;
 
   constructor(
     private router: Router,
@@ -81,11 +82,16 @@ export class ProductListComponent implements OnInit {
     this.productService.listTipo(tipo2.tipo).subscribe(
       data => {
         this.products = data;
+        this.isSelected = true;
       },
       err => {
         console.log(err);
       }
     )
+  }
+
+  reload():void {
+    window.location.reload();
   }
 
 }

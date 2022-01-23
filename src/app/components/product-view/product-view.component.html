@@ -1,14 +1,27 @@
 <app-header></app-header>
-<div class="container" >
-  <div class="row">
-    <div class="col-md-8">
+<div class="container">
+
+
+    <div *ngIf="!isUser" class="row">
       <app-product-list></app-product-list>
     </div>
-    <div class="col-md-4">
-      <app-carrito></app-carrito>
+
+    <div *ngIf="isUser "class="row">
+      <div class="col-md-8">
+        <app-product-list></app-product-list>
+      </div>
+      <div class="col-md-4 mt-5">
+        <app-carrito></app-carrito>
+      </div>
     </div>
-  </div>
+
+
+
+
+
+
+
 </div>
-<div class="animate__animated animate__backInUp">
+
   <app-footer></app-footer>
-  </div>
+

@@ -42,7 +42,6 @@
                 <option [ngValue]="null" selected>Escoja un tipo de Producto</option>
                 <option [ngValue]="tipo.tipo" *ngFor="let tipo of tipos">{{tipo.tipo}}</option>
               </select>
-
             </div>
             <div>¿Desea crear un nuevo tipo de producto?
               <input #isNewTipoCheckBox id="isNewTipoCheckBox" type="checkbox" [checked]="isNewTipo"
@@ -74,9 +73,6 @@
       <button class="btn btn-outline-primary btn-block" style="margin-bottom: 9px;" routerLink="/product">
         <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
-    <button class="btn btn-primary" (click)="isNewTipo = !isNewTipo">
-      Click me to change all of the [codeOnly] values below to true
-    </button>
   </div>
 </div>
 
