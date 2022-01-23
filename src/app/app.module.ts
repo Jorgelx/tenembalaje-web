@@ -25,6 +25,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 
@@ -43,6 +44,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     RegistroComponent,
     ProductoCrearComponent,
+    LoadingComponent,
   ],
   imports: [
     RouterModule,

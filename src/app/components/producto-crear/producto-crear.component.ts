@@ -15,7 +15,7 @@ import { timer } from 'rxjs';
   styleUrls: ['./producto-crear.component.css']
 })
 export class ProductoCrearComponent implements OnInit {
-  @ViewChild('imagenInputFile', {static: false}) imagenFile: ElementRef;
+  @ViewChild('imagenInputFile', { static: false }) imagenFile: ElementRef;
 
   imagenSubida: Imagen = null;
   imagen: File;
@@ -41,10 +41,9 @@ export class ProductoCrearComponent implements OnInit {
   }
 
 
-  private delay(ms: number)
-{
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+  private delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   crearProducto() {
 
@@ -54,12 +53,12 @@ export class ProductoCrearComponent implements OnInit {
         this.toastr.success('Producto Creado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.spinner.hide();
+
         this.router.navigate(['/product']);
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
+          timeOut: 3000, positionClass: 'toast-top-center',
         });
 
       }
@@ -69,36 +68,29 @@ export class ProductoCrearComponent implements OnInit {
   onCreate(): void {
     if (this.imagen != null) {
       this.onUpload();
-      this.spinner.show();
+
+      this.router.navigate(['/loading']);
+      //Parar 6 segundos para obtener respuesta de cloudbinary
       const source = timer(6000);
-      this.router.navigate(['/product']);
-      const subscribe = source.subscribe(val =>  this.crearProducto());
-
-
-
-
-
-      console.log("After sleep:  " + new Date().toString());
-
-
- }
+      const subscribe = source.subscribe(val => this.crearProducto());
+    }
     else {
-      const bolsa = new Product(this.nombre, this.nombreEng, this.tipo, this.precio, this.descripcion,this.descripcion, 'https://res.cloudinary.com/doypumiit/image/upload/v1623935766/wfq6yr7mvdidyworvncs.jpg', this.enVenta);
+      const bolsa = new Product(this.nombre, this.nombreEng, this.tipo, this.precio, this.descripcion, this.descripcion, 'https://res.cloudinary.com/doypumiit/image/upload/v1623935766/wfq6yr7mvdidyworvncs.jpg', this.enVenta);
       this.servicio.save(bolsa).subscribe(
         data => {
           this.toastr.success('Producto Creado', 'OK', {
             timeOut: 3000, positionClass: 'toast-top-center'
           });
 
-          this.router.navigate(['/productos']);
+          this.router.navigate(['/product']);
         },
         err => {
           this.toastr.error("Error subiendo el archivo", 'Error', {
-            timeOut: 3000,  positionClass: 'toast-top-center',
+            timeOut: 3000, positionClass: 'toast-top-center',
           });
-
           this.router.navigate(['/product']);
         }
+
       );
     }
 
