@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row mt-5">
+  <div class="row mt-5 mb-3">
     <div class="col-md-4 mx-auto">
       <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
         <div class="form-group">
@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
           <label for="nombreEng">Nombre Ingles</label>
-          <input type="text" class="form-control" id="nombreEng" name="nombreEng" [(ngModel)]="nombreEng" required>
+          <input type="text" class="form-control" id="nombreEng" name="nombreEng" [(ngModel)]="nombreEng">
         </div>
         <div class="form-group">
           <label for="precio">Precio</label>
@@ -24,22 +24,44 @@
           <input type="text" class="form-control" id="descripcionEng" name="descripcionEng"
             [(ngModel)]="descripcionEng">
         </div>
-        <div class="form-group">
+        <!-- div class="form-group">
           <label for="tipo">tipo</label>
           <input type="text" class="form-control" id="tipo" name="tipo" [(ngModel)]="tipo">
-        </div>
+        </div-->
+
         <div class="form-group">
+          <div>
+            <div>
+              <label for="tipo">Tipo:</label>
+            </div>
+            <div *ngIf="isNewTipo">
+              <input type="text" class="form-control" id="tipo" name="tipo" [(ngModel)]="tipo">
+            </div>
+            <div *ngIf="!isNewTipo">
+              <select class="form-group" name="tipo" id="tipo" [(ngModel)]="tipo">
+                <option [ngValue]="null" selected>Escoja un tipo de Producto</option>
+                <option [ngValue]="tipo.tipo" *ngFor="let tipo of tipos">{{tipo.tipo}}</option>
+              </select>
+
+            </div>
+            <div>¿Desea crear un nuevo tipo de producto?
+              <input #isNewTipoCheckBox id="isNewTipoCheckBox" type="checkbox" [checked]="isNewTipo"
+                (change)="onIsNewTipoChanged(isNewTipoCheckBox.checked)" />
+            </div>
+          </div>
+        </div>
           <!-- <label for="img">Imagen</label>
             <input type="file" class="form-control" id="img" name="img"
             [(ngModel)]="img"> -->
 
           <!---->
-          <label class="text" for="imagen">Elige una imagen</label>
+          <label class="text" for="imagen"><h4>Elige una imagen:</h4></label>
           <input type="file" class="text" id="imagen" #imagenInputFile (change)="onFileChange($event)"
             accept="image/png, image/jpeg, image/gif">
 
           <!---->
-        </div>
+
+
         <div *ngIf="imagen" class="mt-5">
           <h5>Vista Previa:</h5>
           <div>
@@ -49,129 +71,17 @@
         <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Crear</button>
       </form>
       <br>
-      <button class="btn btn-outline-primary btn-block" routerLink="/product">
+      <button class="btn btn-outline-primary btn-block" style="margin-bottom: 9px;" routerLink="/product">
         <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
     </div>
-
-  </div>
-</div>
-
-<div class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="card">
-
-          <!--FOOOORM-->
-          <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
-          <label *ngIf="!imagen" class="text " for="imagen">Elige una imagen</label>
-          <div *ngIf="imagen" class="mt-5">
-            <h5>Vista Previa:</h5>
-            <div class="text-center">
-              <img class="card-img-top image-thumbnail" style="max-width: 100px" [src]="imagenMin">
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <input type="file" class="text" id="imagen" #imagenInputFile (change)="onFileChange($event)"
-              accept="image/png, image/jpeg, image/gif">
-          </div>
-
-
-            <div class="form-group card-body">
-              <label class="card-title"><h5>Nombre</h5></label>
-              <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
-            </div>
-
-            <div class="form-group">
-              <label for="nombre">Nombre</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
-            </div>
-            <div class="form-group">
-              <label for="nombreEng">Nombre Ingles</label>
-              <input type="text" class="form-control" id="nombreEng" name="nombreEng" [(ngModel)]="nombreEng" required>
-            </div>
-            <div class="form-group">
-              <label for="precio">Precio</label>
-              <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="precio" required>
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Descripción</label>
-              <input type="text" class="form-control" id="descripcion" name="descripcionEng" [(ngModel)]="descripcion">
-            </div>
-            <div class="form-group">
-              <label for="descripcionEng">Descripción Ingles</label>
-              <input type="text" class="form-control" id="descripcionEng" name="descripcionEng"
-                [(ngModel)]="descripcionEng">
-            </div>
-            <div class="form-group">
-              <label for="tipo">tipo</label>
-              <input type="text" class="form-control" id="tipo" name="tipo" [(ngModel)]="tipo">
-            </div>
-            <div class="form-group">
-
-              <label class="text" for="imagen">Elige una imagen</label>
-              <input type="file" class="text" id="imagen" #imagenInputFile (change)="onFileChange($event)"
-                accept="image/png, image/jpeg, image/gif">
-
-            </div>
-            <div *ngIf="imagen" class="mt-5">
-              <h5>Vista Previa:</h5>
-              <div>
-                <img class="image-thumbnail" style="max-width: 100px" [src]="imagenMin">
-              </div>
-            </div>
-            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Crear</button>
-          </form>
-        </div>
-      </div>
-    </div>
+    <button class="btn btn-primary" (click)="isNewTipo = !isNewTipo">
+      Click me to change all of the [codeOnly] values below to true
+    </button>
   </div>
 </div>
 
 
 
-<!-- FIIIIN FORM -->
 
 
-
-<div class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="card">
-          <label *ngIf="!imagen" class="text " for="imagen">Elige una imagen</label>
-          <div *ngIf="imagen" class="mt-5">
-            <h5>Vista Previa:</h5>
-            <div class="text-center">
-              <img class="card-img-top image-thumbnail" style="max-width: 100px" [src]="imagenMin">
-            </div>
-          </div>
-          <div class="col-md-12">
-            <input type="file" class="text" id="imagen" #imagenInputFile (change)="onFileChange($event)"
-              accept="image/png, image/jpeg, image/gif">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="animate__animated animate__backInUp">
-  <app-footer></app-footer>
-</div>
+<app-footer></app-footer>

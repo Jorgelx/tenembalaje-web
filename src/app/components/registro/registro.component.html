@@ -5,12 +5,16 @@
 </div>
 
 <ng-template #loggedOut>
-    <div class="container d-flex justify-content-center animate__animated animate__headShake">
+  <div class="py-5 text-center" style="background-image: url('');background-size:cover;   height: 666px;">
+
+    <div  [ngClass]="{
+      'animate__bounceOutLeft': goLogin
+    }" class="container d-flex justify-content-center animate__animated animate__bounceInRight">
         <div class="card">
             <div class="card-header">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+                      <a class="nav-link" role="button" (click)="login()">Iniciar Sesión</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link active" routerLink="/registro">Crear Cuenta</a>
@@ -48,8 +52,9 @@
             </div>
         </div>
     </div>
+  </div>
 </ng-template>
 &nbsp;
-<div class="animate__animated animate__backInUp">
-  <app-footer></app-footer>
-</div>
+
+<app-footer></app-footer>
+

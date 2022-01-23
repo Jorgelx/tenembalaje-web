@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { timer } from 'rxjs';
 import { NuevoUsuario } from 'src/app/model/nuevo-usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -19,6 +20,7 @@ export class RegistroComponent implements OnInit {
   password: string;
   errMsj: string;
   isLogged = false;
+  goLogin = false;
 
   constructor(
     private tokenService: TokenService,
@@ -33,6 +35,12 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+  login(): void {
+    this.goLogin = true;
+    //Parar 1 segundo para que se vea la animacion de salida.
+    const source = timer(600);
+    const subscribe = source.subscribe(val => this.router.navigate(['/login']));
+  }
   onRegister(): void {
     this.nuevoUsuario = new NuevoUsuario(this.nombre, this.nombreUsuario, this.email, this.password);
     this.authService.nuevo(this.nuevoUsuario).subscribe(

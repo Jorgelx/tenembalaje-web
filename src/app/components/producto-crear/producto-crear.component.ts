@@ -1,13 +1,13 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Imagen } from 'src/app/model/imagen';
 import { Product } from 'src/app/model/product';
 import { ImagenService } from 'src/app/services/imagen.service';
 import { ProductService } from 'src/app/services/product.service';
 import { timer } from 'rxjs';
+import { Tipo } from 'src/app/model/tipo';
 
 @Component({
   selector: 'app-producto-crear',
@@ -28,16 +28,20 @@ export class ProductoCrearComponent implements OnInit {
   descripcionEng: string = null;
   img: string = null;
   enVenta = false;
+  tipos: Tipo[] = [];
+  isNewTipo = false;
+
   constructor(
     private toastr: ToastrService,
     private router: Router,
     private servicio: ProductService,
     private imagenService: ImagenService,
-    private spinner: NgxSpinnerService
+    private productService: ProductService,
   ) { }
 
 
   ngOnInit(): void {
+    this.cargarTipos();
   }
 
 
@@ -126,6 +130,17 @@ export class ProductoCrearComponent implements OnInit {
     this.imagenFile.nativeElement.value = '';
   }
 
-
-
+  cargarTipos(): void {
+    this.productService.cargarTipos().subscribe(
+      data => {
+        this.tipos = data;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+  public onIsNewTipoChanged(value:boolean){
+    this.isNewTipo = value;
+}
 }
