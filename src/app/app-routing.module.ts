@@ -7,10 +7,12 @@ import { ProductViewComponent } from './components/product-view/product-view.com
 import { ProductoCrearComponent } from './components/producto-crear/producto-crear.component';
 import { RegistroComponent } from './components/registro/registro.component';
 
-
+import { AnimacionPrincipalComponent } from './components/animacion-principal/animacion-principal.component';
 const routes: Routes = [
-  {path: '' , component: InicioComponent},
+
+  {path: '', component: AnimacionPrincipalComponent},
   {path: 'inicio' , component: InicioComponent},
+  {path: 'inicio/:inicio' , component: InicioComponent},
   {path: 'product', component: ProductViewComponent},
   {path: 'loading', component: LoadingComponent},
   {path: 'login' , component: LoginComponent},

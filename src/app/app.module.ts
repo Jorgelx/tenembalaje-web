@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './components/loading/loading.component';
+import { AnimacionPrincipalComponent } from './components/animacion-principal/animacion-principal.component';
 
 
 
@@ -45,6 +46,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     RegistroComponent,
     ProductoCrearComponent,
     LoadingComponent,
+    AnimacionPrincipalComponent,
   ],
   imports: [
     RouterModule,
