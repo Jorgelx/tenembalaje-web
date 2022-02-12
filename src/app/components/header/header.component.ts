@@ -19,13 +19,15 @@ export class HeaderComponent implements OnInit {
   constructor(
     private tokenService: TokenService,
     private router: Router,
-
     private translate: TranslateService) {
 
 
     }
 
 
+    lang: string;
+    langEs: boolean;
+    langEn: boolean;
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -34,6 +36,17 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLogged = false;
     }
+    this.lang = this.translate.currentLang;
+    if(this.lang == null){
+    this.lang = this.translate.defaultLang;
+    }
+    if(this.lang=='es'){
+      this.langEs=true;
+    }
+    if(this.lang=='en') {
+      this.langEn=true;
+    }
+
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if(rol === 'ROLE_ADMIN') {

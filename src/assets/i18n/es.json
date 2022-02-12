@@ -1,4 +1,6 @@
 {
   "INICIO": "Inicio",
-  "NOTICIA_TITULO":"{{noticia.titulo}}"
+  "PRODUCTOS" : "Productos",
+  "CONTACTO": "Contacto",
+  "REGISTRO": "Registro"
 }

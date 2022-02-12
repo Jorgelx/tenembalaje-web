@@ -7,15 +7,15 @@
       <div class="collapse show navbar-collapse" id="navbar8">
         <div class="col-md-4">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"> <a class="nav-link" routerLink="/inicio">{{ 'INICIO' | translate }} </a> </li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/inicio">{{ 'INICIO' | translate }} </a></li>
             <li class="nav-item"> <a class="nav-link" (click)="productos()" data-toggle="collapse"
-                data-target="#navbarNavDropdown" onmouseover="" style="cursor: pointer;">Productos</a> </li>
+                data-target="#navbarNavDropdown" onmouseover="" style="cursor: pointer;">{{ 'PRODUCTOS' | translate }}</a> </li>
             <li class="nav-item"> <a class="nav-link" (click)="contacto()" onmouseover="" style="cursor: pointer;">
                 Contacto </a> </li>
             <li class="nav-item" *ngIf="isLogged"> <a class="nav-link" (click)="user()" onmouseover=""
-                style="cursor: pointer;"> Usuario</a></li>
+                style="cursor: pointer;"> {{ 'CONTACTO' | translate }}</a></li>
             <li class="nav-item" *ngIf="!isLogged"> <a class="nav-link" routerLink="/registro" onmouseover=""
-                style="cursor: pointer;">Registrate</a></li>
+                style="cursor: pointer;">{{ 'REGISTRO' | translate }}</a></li>
           </ul>
         </div>
         <!--animate__animated animate__flip-->

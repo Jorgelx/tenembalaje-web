@@ -17,12 +17,11 @@
         </div>
         <div class="form-group">
           <label for="descripcion">Descripción</label>
-          <input type="text" class="form-control" id="descripcion" name="descripcionEng" [(ngModel)]="descripcion">
+          <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion">
         </div>
         <div class="form-group">
           <label for="descripcionEng">Descripción Ingles</label>
-          <input type="text" class="form-control" id="descripcionEng" name="descripcionEng"
-            [(ngModel)]="descripcionEng">
+          <input type="text" class="form-control" id="descripcionEng" name="descripcionEng" [(ngModel)]="descripcionEng">
         </div>
         <!-- div class="form-group">
           <label for="tipo">tipo</label>
@@ -36,6 +35,10 @@
             </div>
             <div *ngIf="isNewTipo">
               <input type="text" class="form-control" id="tipo" name="tipo" [(ngModel)]="tipo">
+              <div>
+                <label for="tipo">Tipo Ingles:</label>
+              </div>
+              <input type="text" class="form-control" id="tipoEng" name="tipoEng" [(ngModel)]="tipoEng">
             </div>
             <div *ngIf="!isNewTipo">
               <select class="form-group" name="tipo" id="tipo" [(ngModel)]="tipo">

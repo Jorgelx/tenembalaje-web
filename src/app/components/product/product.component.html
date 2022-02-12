@@ -2,9 +2,12 @@
   <img [src]="product.img"
   class="card-img-top" alt="">
   <div class="card-body">
-    <h5 class="card-title">{{product.nombre}}</h5>
-    <p class="card-text">{{product.descripcion}}</p>
-    <p class="card-text">Precio: {{product.precio}} €</p>
+    <h5 *ngIf="langEs" class="card-title">{{product.nombre}}</h5>
+    <h5 *ngIf="langEn" class="card-title">{{product.nombreEng}}</h5>
+    <p *ngIf="langEs" class="card-text">{{product.descripcion}}</p>
+    <p *ngIf="langEn" class="card-text">{{product.descripcionEng}}</p>
+    <p *ngIf="langEs" class="card-text">Precio: {{product.precio}} €</p>
+    <p *ngIf="langEn" class="card-text">Precio: {{product.precio}} €</p>
    <button class="btn btn-success btn-sm" style="margin: 6px;" (click)="addToCart()">
     <i class="fa fa-shopping-cart"></i>
       Añadir al carrito</button>

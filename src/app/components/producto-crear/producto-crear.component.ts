@@ -24,6 +24,7 @@ export class ProductoCrearComponent implements OnInit {
   nombreEng = '';
   precio: number = null;
   tipo: string = null;
+  tipoEng: string = null;
   descripcion: string = null;
   descripcionEng: string = null;
   img: string = null;
@@ -51,7 +52,7 @@ export class ProductoCrearComponent implements OnInit {
 
   crearProducto() {
 
-    const producto = new Product(this.nombre, this.nombreEng, this.tipo, this.precio, this.descripcion, this.descripcionEng, this.imagenSubida.imagenUrl, this.enVenta);
+    const producto = new Product(this.nombre, this.nombreEng, this.tipo, this.tipoEng, this.precio, this.descripcion, this.descripcionEng, this.imagenSubida.imagenUrl, this.enVenta);
     this.servicio.save(producto).subscribe(
       data => {
         this.toastr.success('Producto Creado', 'OK', {
@@ -79,8 +80,8 @@ export class ProductoCrearComponent implements OnInit {
       const subscribe = source.subscribe(val => this.crearProducto());
     }
     else {
-      const bolsa = new Product(this.nombre, this.nombreEng, this.tipo, this.precio, this.descripcion, this.descripcion, 'https://res.cloudinary.com/doypumiit/image/upload/v1623935766/wfq6yr7mvdidyworvncs.jpg', this.enVenta);
-      this.servicio.save(bolsa).subscribe(
+      const product = new Product(this.nombre, this.nombreEng, this.tipo,  this.tipoEng, this.precio, this.descripcion, this.descripcionEng, 'https://res.cloudinary.com/doypumiit/image/upload/v1623935766/wfq6yr7mvdidyworvncs.jpg', this.enVenta);
+      this.servicio.save(product).subscribe(
         data => {
           this.toastr.success('Producto Creado', 'OK', {
             timeOut: 3000, positionClass: 'toast-top-center'

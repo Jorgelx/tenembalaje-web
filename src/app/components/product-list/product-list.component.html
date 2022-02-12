@@ -12,7 +12,10 @@
     (click)="loadProducts()">Todos</button>
 
     <button type="button" class="target btn btn-light " style="margin: 9px;" *ngFor="let tipo of tipos"
-      (click)="cambiarProductos2(tipo)">{{tipo.tipo}}</button>
+      (click)="cambiarProductos2(tipo)">
+      <span *ngIf="langEs">{{tipo.tipo}}</span>
+      <span *ngIf="langEn">{{tipo.tipoEng}}</span>
+    </button>
   </div>
 
 

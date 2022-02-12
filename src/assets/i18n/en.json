@@ -1,4 +1,6 @@
 {
   "INICIO": "Index",
-  "NOTICIA_TITULO":"{{noticia.tituloEng}}"
+  "PRODUCTOS" : "Products",
+  "CONTACTO": "Contact",
+  "REGISTRO": "Login"
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Busqueda } from 'src/app/model/busqueda-dto';
 import { Product } from 'src/app/model/product';
 import { Tipo } from 'src/app/model/tipo';
@@ -23,11 +24,15 @@ export class ProductListComponent implements OnInit {
   isAdmin = false;
   roles: string[];
   isSelected = false;
+  lang: string;
+  langEs: boolean;
+  langEn: boolean;
 
   constructor(
     private router: Router,
     private productService: ProductService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +44,17 @@ export class ProductListComponent implements OnInit {
         this.isAdmin = true;
       }
     });
+
+    this.lang = this.translate.currentLang;
+    if(this.lang == null){
+    this.lang = this.translate.defaultLang;
+    }
+    if(this.lang=='es'){
+      this.langEs=true;
+    }
+    if(this.lang=='en') {
+      this.langEn=true;
+    }
   }
 
 

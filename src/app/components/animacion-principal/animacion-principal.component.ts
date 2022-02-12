@@ -23,9 +23,9 @@ export class AnimacionPrincipalComponent implements OnInit {
 
   startAnimaciones() : void {
  this.animacion1 = true;
- const source = timer(1200);
+ const source = timer(1600);
  const subscribe = source.subscribe(val =>  this.animacion2 = true);
- const source2 = timer(3333)
+ const source2 = timer(2200)
  const subscribe2 = source2.subscribe(val => this.router.navigate(['/inicio',this.inicio] ));
   }
 
