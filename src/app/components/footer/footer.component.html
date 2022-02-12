@@ -2,15 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="mx-md-auto d-md-flex align-items-center justify-content-center"> <a href="#"><img
-            src="../../assets/img/logoarriba.png" class='tenembalaje' width="30%" height="30%"> Me dijiste noseque
-          aqui</a>
+            src="../../assets/img/logoarriba.png" class='tenembalaje' width="30%" height="30%"> <!----> </a>
         <!--<i class="d-block fa fa-stop-circle fa-2x mr-md-5 text-primary"></i>-->
         <ul class="nav mx-md-auto d-flex justify-content-center">
-          <li class="nav-item"> <a class="nav-link active text-dark" href="#">Inicio</a> </li>
+          <li class="nav-item"> <a class="nav-link active text-dark" href="#">{{ 'INICIO' | translate }}</a> </li>
           <li class="nav-item"> <a class="nav-link text-dark" (click)="productos()" onmouseover=""
-              style="cursor: pointer;">Productos</a> </li>
+              style="cursor: pointer;">{{ 'PRODUCTOS' | translate }}</a> </li>
           <li class="nav-item"> <a class="nav-link text-dark" (click)="contacto()" onmouseover=""
-              style="cursor: pointer;">Contacto</a> </li>
+              style="cursor: pointer;">{{ 'CONTACTO' | translate }}</a> </li>
         </ul>
         <div class="row">
           <div class="col-md-12 d-flex align-items-center justify-content-md-between justify-content-center my-2"> <a

@@ -2,5 +2,6 @@
   "INICIO": "Index",
   "PRODUCTOS" : "Products",
   "CONTACTO": "Contact",
-  "REGISTRO": "Login"
+  "REGISTRO": "Login",
+  "TODOS": "All"
 }
