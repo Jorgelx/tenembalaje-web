@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class HeaderComponent implements OnInit {
 
+
   isLogged = false;
   isAdmin = false;
   nombreUsuario: string;
@@ -16,8 +18,14 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private tokenService: TokenService,
-    private router: Router
-  ) { }
+    private router: Router,
+
+    private translate: TranslateService) {
+
+
+    }
+
+
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -44,7 +52,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/user']);
   }
   changeLang(lang: string) {
-   // this.translate.use(lang);
+   this.translate.use(lang);
+   this.router.navigate(['/']);
   }
   onLogOut(): void {
     this.tokenService.logOut();

@@ -1,1 +1,19 @@
-{{noticia.titulo}}
+
+  <div class="text-center mt-5 ">
+    <div class="container ">
+      <div class="row ">
+        <div class="col-md-6 mx-auto marco  mb-3" >
+          <h1 *ngIf='langEs' class="mb-3">{{noticia.titulo}}</h1>
+          <h1 *ngIf='langEn' class="mb-3">{{noticia.tituloEng}}</h1>
+          <img class="img-fluid d-block mx-auto marcoImg " [src]="noticia.img" width="100%">
+          <h5 *ngIf='langEs'class="lead mt-3">{{noticia.subtitulo}}</h5>
+          <h5 *ngIf='langEn'class="lead">{{noticia.subtituloEng}}</h5>
+          <p class=""*ngIf='langEs'>{{noticia.texto}}</p>
+          <p *ngIf='langEn'>{{noticia.textoEng}}</p>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+  </div>
+

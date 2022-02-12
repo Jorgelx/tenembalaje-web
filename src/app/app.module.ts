@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductComponent } from './components/product/product.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -29,8 +29,15 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { AnimacionPrincipalComponent } from './components/animacion-principal/animacion-principal.component';
 import { NoticiasComponent } from './components/noticias/noticias.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
+//i18n
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/' , '.json')
+}
 
 @NgModule({
   declarations: [
@@ -64,8 +71,14 @@ import { NoticiaComponent } from './components/noticia/noticia.component';
     FormsModule,
     ToastrModule.forRoot({
       positionClass :'toast-bottom-right'
-    })
-
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [interceptorProvider],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
