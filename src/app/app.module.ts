@@ -27,6 +27,8 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './components/loading/loading.component';
 import { AnimacionPrincipalComponent } from './components/animacion-principal/animacion-principal.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
+import { NoticiaComponent } from './components/noticia/noticia.component';
 
 
 
@@ -47,6 +49,8 @@ import { AnimacionPrincipalComponent } from './components/animacion-principal/an
     ProductoCrearComponent,
     LoadingComponent,
     AnimacionPrincipalComponent,
+    NoticiasComponent,
+    NoticiaComponent,
   ],
   imports: [
     RouterModule,
