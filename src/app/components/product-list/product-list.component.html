@@ -7,6 +7,9 @@
   </div-->
 
   <div class="animate__animated animate__fadeIn mt-3">
+    <div *ngIf="isAdmin" class="text-right">
+      <a class="btn btn-success text-white btn-lg" (click)="crear()"> {{ 'CREAR_PRODUCTO' | translate }}</a>
+    </div>
 
     <button type="button" class="target btn btn-light " style="margin: 9px;"
     (click)="loadProducts()">{{ 'TODOS' | translate }}</button>
@@ -19,9 +22,6 @@
   </div>
 
 
-  <div *ngIf="isAdmin" class="text-center">
-    <a class="btn btn-success text-white btn-lg" (click)="crear()">Crear producto</a>
-  </div>
 
     <div class="col-md-4" *ngFor='let product of products'>
       <app-product [product]="product"></app-product>

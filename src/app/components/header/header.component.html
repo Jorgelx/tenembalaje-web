@@ -44,8 +44,10 @@
             <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
               <a class="nav-link" style="cursor: pointer;"><i class="fas fa-door-open text-danger"></i></a>
             </li>
-
           </ul>
+        </div>
+        <div class="nav-item" *ngIf="!carritoVacio" (click)="productos()">
+          <a class="nav-link" style="cursor: pointer;"><i class="fas fa-shopping-cart text-warning">{{numeroCarrito}}</i></a>
         </div>
       </div>
     </div>

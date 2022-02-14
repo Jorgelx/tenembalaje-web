@@ -1,13 +1,13 @@
 <ngx-spinner></ngx-spinner>
 <div *ngIf="cartItems.length < 1">
   <div class="alert alert-info text-center">
-    <h4>Tu carrito esta vacio</h4>
+    <h4> {{ 'CARRITO_VACIO' | translate }}</h4>
   </div>
 </div>
 
 <div *ngIf="cartItems.length > 0">
   <div class="alert alert-info text-center">
-    <h4>Carrito</h4>
+    <h4> {{ 'CARRITO' | translate }}</h4>
   </div>
   <div class="text-center">
     <ul class="list-group">
@@ -33,7 +33,7 @@
 
   <div class="text-center mb-3" style="margin-top: 3%;">
     <button class="btn btn-outline-danger btn-block text-center" (click) = "emptyCart()">
-      <i class="fas fa-ban"> Vaciar Carrito </i>
+      <i class="fas fa-ban">  {{ 'VACIAR' | translate }} </i>
     </button>
 
 

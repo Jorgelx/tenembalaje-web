@@ -1,7 +1,22 @@
+
 {
   "INICIO": "Index",
   "PRODUCTOS" : "Products",
   "CONTACTO": "Contact",
   "REGISTRO": "Login",
-  "TODOS": "All"
+  "TODOS": "All",
+  "ADD": "Add to cart",
+  "VER": "See",
+  "PRECIO" : "Price",
+  "LOGIN" : "Login",
+  "CREAR_CUENTA" : "Register",
+  "USER_NAME" : "User name",
+  "PASSWORD" : "Password",
+"NAME" : "Name",
+"EMAIL" : "Email",
+"CREAR_PRODUCTO": "Add Product",
+"CARRITO_VACIO": "Yout cart is empty",
+"CARRITO": "Cart",
+"VACIAR": "Clear cart"
+
 }

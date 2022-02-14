@@ -6,13 +6,18 @@
     <h5 *ngIf="langEn" class="card-title">{{product.nombreEng}}</h5>
     <p *ngIf="langEs" class="card-text">{{product.descripcion}}</p>
     <p *ngIf="langEn" class="card-text">{{product.descripcionEng}}</p>
-    <p *ngIf="langEs" class="card-text">Precio: {{product.precio}} €</p>
-    <p *ngIf="langEn" class="card-text">Precio: {{product.precio}} €</p>
-   <button class="btn btn-success btn-sm" style="margin: 6px;" (click)="addToCart()">
-    <i class="fa fa-shopping-cart"></i>
-      Añadir al carrito</button>
+    <p *ngIf="langEs" class="card-text">
+      {{ 'PRECIO' | translate }}: {{product.precio}} €</p>
+    <p *ngIf="langEn" class="card-text">
+      {{ 'PRECIO' | translate }}: {{product.precio}} €</p>
+   <button *ngIf="isUser" class="btn btn-success btn-sm" style="margin: 6px;" (click)="addToCart()">
+    <i  class="fa fa-shopping-cart"></i>
+    {{ 'ADD' | translate }}</button>
+      <button *ngIf="!isUser" class="btn btn-success btn-sm" style="margin: 6px;" routerLink="/registro">
+        <i  class="fa fa-shopping-cart"></i>
+        {{ 'ADD' | translate }}</button>
 	<button class="btn btn-success btn-sm" style="margin: 6px;">
     <i class="fa fa-eye"></i>
-      Ver</button>
+    {{ 'VER' | translate }}</button>
   </div>
 </div>

@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'ngb-modal';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ignoreElements } from 'rxjs';
 import { CartItem } from 'src/app/model/cart-item';
 import { Product } from 'src/app/model/product';
 import { MessageService } from 'src/app/services/message.service';
@@ -27,6 +28,9 @@ export class CarritoComponent implements OnInit {
   total = 0;
 
   public payPalConfig?: IPayPalConfig;
+  numeroCarritoLocal: string;
+  numeroCarrito: number;
+
 
   ngOnInit(): void {
     this.initConfig();
@@ -111,6 +115,8 @@ export class CarritoComponent implements OnInit {
       }
       this.total = this.getTotal();
       this.storageService.setCart(this.cartItems);
+      console.log(this.getNumeroCarrito)
+      localStorage.setItem('carrito', this.getNumeroCarrito());
     });
   }
 
@@ -136,10 +142,20 @@ export class CarritoComponent implements OnInit {
     return +total.toFixed(2);
   }
 
+  getNumeroCarrito() : string {
+    let numero = 0;
+    this.cartItems.forEach((item: { qty: number; }) => {
+      numero += item.qty;
+      this.numeroCarritoLocal = numero.toString();
+    });
+
+return this.numeroCarritoLocal;
+  }
   emptyCart(): void {
     this.cartItems = [];
     this.total = 0;
     this.storageService.clear();
+    localStorage.removeItem('carrito');
   }
   deleteItem(i: number): void {
     if (this.cartItems[i].qty > 1) {
@@ -147,8 +163,12 @@ export class CarritoComponent implements OnInit {
     } else {
       this.cartItems.splice(i, 1);
     }
+   this.numeroCarrito = Number(this.numeroCarritoLocal) -1;
+   this.numeroCarritoLocal = this.numeroCarrito.toString();
     this.total = this.getTotal();
     this.storageService.setCart(this.cartItems);
+    localStorage.setItem('carrito', this.getNumeroCarrito());
+
   }
 
   openModal(items: any, amount: any): void {

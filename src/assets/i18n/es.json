@@ -3,5 +3,18 @@
   "PRODUCTOS" : "Productos",
   "CONTACTO": "Contacto",
   "REGISTRO": "Registro",
-  "TODOS": "Todos"
+  "TODOS": "Todos",
+  "ADD": "Comprar",
+  "VER": "Ver",
+  "PRECIO" : "Precio",
+  "LOGIN" : "Iniciar sesión",
+  "CREAR_CUENTA" : "Crear cuenta",
+  "USER_NAME" : "Nombre usuario",
+  "PASSWORD" : "Contraseña",
+"NAME" : "Nombre",
+"EMAIL" : "Correo electrónico",
+"CREAR_PRODUCTO": "Crear Producto",
+"CARRITO_VACIO": "Tu carrito esta vacio",
+"CARRITO": "Carrito",
+"VACIAR": "Vaciar carrito"
 }
