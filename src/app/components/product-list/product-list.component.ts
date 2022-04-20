@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Busqueda } from 'src/app/model/busqueda-dto';
 import { Product } from 'src/app/model/product';
@@ -14,6 +14,9 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class ProductListComponent implements OnInit {
 
+  @Input()
+  tipoSelectIni!: string;
+
   products: Product[] = [];
   tipo: any = null;
   busqueda: Busqueda = {
@@ -27,17 +30,27 @@ export class ProductListComponent implements OnInit {
   lang: string;
   langEs: boolean;
   langEn: boolean;
+  tipoSelect: any;
 
   constructor(
     private router: Router,
     private productService: ProductService,
     private tokenService: TokenService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private route: ActivatedRoute
+
   ) { }
 
   ngOnInit(): void {
+
+
     this.loadProducts();
     this.cargarTipos();
+    if(this.tipoSelectIni){
+      this.tipo = new Tipo(this.tipoSelectIni);
+      this.cambiarProductos2(this.tipo);
+    }
+
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol === 'ROLE_ADMIN') {

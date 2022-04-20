@@ -5,16 +5,15 @@
       <option [ngValue]="tipo" *ngFor="let tipo of tipos">{{tipo.tipo}}</option>
     </select>
   </div-->
-
   <div class="animate__animated animate__fadeIn mt-3">
     <div *ngIf="isAdmin" class="text-right">
       <a class="btn btn-success text-white btn-lg" (click)="crear()"> {{ 'CREAR_PRODUCTO' | translate }}</a>
     </div>
 
-    <button type="button" class="target btn btn-light " style="margin: 9px;"
-    (click)="loadProducts()">{{ 'TODOS' | translate }}</button>
+    <button autofocus type="button" class="target btn btn-light " style="margin: 9px;"
+    (click)="loadProducts()" >{{ 'TODOS' | translate }}</button>
 
-    <button type="button" class="target btn btn-light " style="margin: 9px;" *ngFor="let tipo of tipos"
+    <button  type="button" class="target btn btn-light " style="margin: 9px;" *ngFor="let tipo of tipos"
       (click)="cambiarProductos2(tipo)">
       <span *ngIf="langEs">{{tipo.tipo}}</span>
       <span *ngIf="langEn">{{tipo.tipoEng}}</span>

@@ -1,24 +1,37 @@
 <app-header></app-header>
 <div class="container">
 
+<div *ngIf="conTipo; else sinTipo">
+  <div *ngIf="!isUser" class="row">
+    <app-product-list tipoSelectIni="{{tipoSelect}}"></app-product-list>
+  </div>
 
-    <div *ngIf="!isUser" class="row">
+  <div *ngIf="isUser "class="row">
+    <div class="col-md-8">
+      <app-product-list tipoSelectIni="{{tipoSelect}}"></app-product-list>
+    </div>
+    <div class="col-md-4 mt-5">
+      <app-carrito></app-carrito>
+    </div>
+  </div>
+
+
+</div>
+<ng-template #sinTipo>
+  <div *ngIf="!isUser" class="row">
+    <app-product-list></app-product-list>
+  </div>
+
+  <div *ngIf="isUser "class="row">
+    <div class="col-md-8">
       <app-product-list></app-product-list>
     </div>
-
-    <div *ngIf="isUser "class="row">
-      <div class="col-md-8">
-        <app-product-list></app-product-list>
-      </div>
-      <div class="col-md-4 mt-5">
-        <app-carrito></app-carrito>
-      </div>
+    <div class="col-md-4 mt-5">
+      <app-carrito></app-carrito>
     </div>
+  </div>
 
-
-
-
-
+</ng-template>
 
 
 </div>

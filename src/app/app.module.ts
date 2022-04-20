@@ -32,6 +32,9 @@ import { NoticiaComponent } from './components/noticia/noticia.component';
 //i18n
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { InicioTiposComponent } from './components/inicio-tipos/inicio-tipos.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
 
 
 
@@ -58,6 +61,9 @@ export function createTranslateLoader(http: HttpClient) {
     AnimacionPrincipalComponent,
     NoticiasComponent,
     NoticiaComponent,
+    InicioTiposComponent,
+    UsuarioComponent,
+    UsuarioAdminComponent,
   ],
   imports: [
     RouterModule,
