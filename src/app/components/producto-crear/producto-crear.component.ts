@@ -16,10 +16,14 @@ import { Tipo } from 'src/app/model/tipo';
 })
 export class ProductoCrearComponent implements OnInit {
   @ViewChild('imagenInputFile', { static: false }) imagenFile: ElementRef;
+  @ViewChild('imagenInputFile2', { static: false }) imagenFile2: ElementRef;
 
   imagenSubida: Imagen = null;
+  imagenSubida2: Imagen = null;
   imagen: File;
+  imagen2: File;
   imagenMin: File;
+  imagenMin2: File;
   nombre = '';
   nombreEng = '';
   precio: number = null;
@@ -27,7 +31,10 @@ export class ProductoCrearComponent implements OnInit {
   tipoEng: string = null;
   descripcion: string = null;
   descripcionEng: string = null;
+  tipoDescripcion: string = null;
+  tipoDescripcionEng: string = null;
   img: string = null;
+  tipoImg: string;
   enVenta = false;
   tipos: Tipo[] = [];
   isNewTipo = false;
@@ -52,7 +59,7 @@ export class ProductoCrearComponent implements OnInit {
 
   crearProducto() {
 
-    const producto = new Product(this.nombre, this.nombreEng, this.tipo, this.tipoEng, this.precio, this.descripcion, this.descripcionEng, this.imagenSubida.imagenUrl, this.enVenta);
+    const producto = new Product(this.nombre, this.nombreEng, this.tipo, this.tipoEng, this.tipoDescripcion, this.tipoDescripcionEng, this.imagenSubida2.imagenUrl, this.precio, this.descripcion, this.descripcionEng, this.imagenSubida.imagenUrl, this.enVenta);
     this.servicio.save(producto).subscribe(
       data => {
         this.toastr.success('Producto Creado', 'OK', {
@@ -71,6 +78,19 @@ export class ProductoCrearComponent implements OnInit {
   }
 
   onCreate(): void {
+    if (this.imagen2 != null) {
+      this.onUpload2();
+
+      this.router.navigate(['/loading']);
+      //Parar 6 segundos para obtener respuesta de cloudbinary
+      const source = timer(6000);
+      //const subscribe = source.subscribe(val => this.crearProducto());
+
+    } else {
+      this.imagenSubida2 = new Imagen();
+      this.imagenSubida2.imagenUrl = 'https://res.cloudinary.com/doypumiit/image/upload/v1623935766/wfq6yr7mvdidyworvncs.jpg';
+    }
+
     if (this.imagen != null) {
       this.onUpload();
 
@@ -79,8 +99,10 @@ export class ProductoCrearComponent implements OnInit {
       const source = timer(6000);
       const subscribe = source.subscribe(val => this.crearProducto());
     }
+
+
     else {
-      const product = new Product(this.nombre, this.nombreEng, this.tipo,  this.tipoEng, this.precio, this.descripcion, this.descripcionEng, 'https://res.cloudinary.com/doypumiit/image/upload/v1623935766/wfq6yr7mvdidyworvncs.jpg', this.enVenta);
+      const product = new Product(this.nombre, this.nombreEng, this.tipo,  this.tipoEng, this.tipoDescripcion, this.tipoDescripcionEng, this.imagenSubida2.imagenUrl, this.precio, this.descripcion, this.descripcionEng, 'https://res.cloudinary.com/doypumiit/image/upload/v1623935766/wfq6yr7mvdidyworvncs.jpg', this.enVenta);
       this.servicio.save(product).subscribe(
         data => {
           this.toastr.success('Producto Creado', 'OK', {
@@ -112,10 +134,34 @@ export class ProductoCrearComponent implements OnInit {
     fr.readAsDataURL(this.imagen);
   }
 
+  onFileChange2(event) {
+
+    this.imagen2 = event.target.files[0];
+    const fr = new FileReader();
+    fr.onload = (evento: any) => {
+      this.imagenMin2 = evento.target.result;
+    };
+    fr.readAsDataURL(this.imagen2);
+  }
+
+
   onUpload(): void {
     this.imagenService.upload(this.imagen).subscribe(
       data => {
         this.imagenSubida = data;
+      },
+      err => {
+        alert(err.error.mensaje);
+        this.reset();
+      }
+    );
+
+  }
+
+  onUpload2(): void {
+    this.imagenService.upload(this.imagen2).subscribe(
+      data => {
+        this.imagenSubida2 = data;
       },
       err => {
         alert(err.error.mensaje);
