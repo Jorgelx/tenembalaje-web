@@ -1,1 +1,168 @@
-<p>usuario-admin works!</p>
+<div class="row">
+
+  <div class="container">
+    <div class="seccion">
+    <h2 class="text-center">Noticias:</h2>
+    <div class="text-center mb-3">
+      <button class="btn btn-success text-white btn-lg" (click)="crearNoticia()">Crear Noticia</button>
+    </div>
+    <table class="table table-striped mb-5">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Titulo Ingles</th>
+          <th scope="col">Subtitulo</th>
+          <th scope="col">Subtitulo Ingles</th>
+          <th scope="col">Texto</th>
+          <th scope="col">Texto Ingles</th>
+          <th scope="col">Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let noticia of noticias">
+          <td>{{noticia.id}}</td>
+          <td>{{noticia.titulo}}</td>
+          <td>{{noticia.tituloEng}}</td>
+          <td>{{noticia.subtitulo}}</td>
+          <td>{{noticia.subtituloEng}}</td>
+          <td>{{noticia.texto}}</td>
+          <td>{{noticia.textoEng}}</td>
+          <td><img style="max-width: 100px" src="{{noticia.img}}"></td>
+          <button href="#modalNoticia"
+          data-toggle="modal" class="btn btn-danger text-white" (click)="borrarModal(noticia.id)"><i
+            class="fa fa-cog fa-trash fa-fw fa-lg" ></i></button>
+      </tbody>
+    </table>
+  </div>
+  <div class="seccion">
+    <h2 class="text-center ">Tipos:</h2>
+    <table class="table table-striped mb-5">
+      <thead>
+        <tr>
+
+          <th scope="col">Id</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Tipo Ingles</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Descripción Ingles</th>
+          <th scope="col">Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tipo of tipos">
+          <td>{{tipo.id}}</td>
+          <td>{{tipo.tipo}}</td>
+          <td>{{tipo.tipoEng}}</td>
+          <td>{{tipo.descripcion}}</td>
+          <td>{{tipo.descripcionEng}}</td>
+          <td><img style="max-width: 100px" src="{{tipo.img}}"></td>
+          <button href="#modalTipo"
+          data-toggle="modal" class="btn btn-danger text-white" (click)="borrarModal(tipo.id)"><i
+            class="fa fa-cog fa-trash fa-fw fa-lg" ></i></button>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="seccion">
+    <h2 class="text-center">Productos:</h2>
+    <div class="text-center mb-3">
+      <a class="btn btn-success text-white btn-lg" (click)="crearProducto()"> {{ 'CREAR_PRODUCTO' | translate }}</a>
+    </div>
+    <table class="table table-striped mb-5">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Nombre Ingles</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Descripción Ingles</th>
+          <th scope="col">Descripción Ingles</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.id}}</td>
+          <td>{{product.nombre}}</td>
+          <td>{{product.nombreEng}}</td>
+          <td>{{product.tipo}}</td>
+          <td>{{product.descripcion}}</td>
+          <td>{{product.descripcionEng}}</td>
+          <td>{{product.precio}}</td>
+          <td><img style="max-width: 100px" src="{{product.img}}"></td>
+
+          <button href="#modalProducto"
+                    data-toggle="modal" class="btn btn-danger text-white" (click)="borrarModal(product.id)"><i
+                      class="fa fa-cog fa-trash fa-fw fa-lg" ></i></button>
+
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+</div>
+
+
+<!-- Modal / Ventana / Borrar PRODUCTO-->
+<div id="modalProducto" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">BORRAR PRODUCTO {{idModal}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estas seguro que quieres borrar el producto con id {{idModal}}?</p>
+        <p class="text-warning"><small>Si lo borras, nunca podrás recuperarlo.</small></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger"  (click)="borrarProducto(idModal)" data-dismiss="modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal / Ventana / Borrar NOTICIA-->
+<div id="modalNoticia" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">BORRAR NOTICIA {{idModal}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estas seguro que quieres borrar la noticia {{idModal}}?</p>
+        <p class="text-warning"><small>Si lo borras, nunca podrás recuperarlo.</small></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger"  (click)="borrarNoticia(idModal)" data-dismiss="modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal / Ventana / Borrar TIPO-->
+<div id="modalTipo" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">BORRAR TIPO {{idModal}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estas seguro que quieres borrar la noticia {{idModal}}?</p>
+        <p>¡SI BORRAS UN TIPO SE BORRARAN TODOS LOS PRODUCTOS CORRESPONDIENTES A ESTE TIPO!</p>
+        <p class="text-warning"><small>Si lo borras, nunca podrás recuperarlo.</small></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger"  (click)="borrarTipo(idModal)" data-dismiss="modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

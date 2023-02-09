@@ -15,6 +15,7 @@ export class Noticia {
     this.tituloEng = tituloEng;
     this.subtitulo = subtitulo;
     this.subtituloEng = subtituloEng;
+    this.texto = texto;
     this.textoEng = textoEng;
     this.img = img;
 

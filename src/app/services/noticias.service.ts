@@ -8,12 +8,18 @@ import { Noticia } from '../model/noticia';
 })
 export class NoticiasService {
 
-  url = "http://localhost:8080/"
+  url = "http://localhost:8080/noticias/"
 
   constructor(private httpClient: HttpClient) { }
 
   public list(): Observable<Noticia[]>{
-    return this.httpClient.get<Noticia[]>(this.url + 'noticias/lista');
+    return this.httpClient.get<Noticia[]>(this.url + 'lista');
   }
 
+  public save(noticia: Noticia): Observable<any> {
+    return this.httpClient.post<any>(this.url + 'crear', noticia);
+  }
+  public borrar(id: number): Observable<any> {
+    return this.httpClient.delete<any>(this.url + `borrar/${id}`)
+  }
 }

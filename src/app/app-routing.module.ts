@@ -9,6 +9,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 
 import { AnimacionPrincipalComponent } from './components/animacion-principal/animacion-principal.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { CrearNoticiaComponent } from './components/crear-noticia/crear-noticia.component';
 const routes: Routes = [
 
   {path: '', component: AnimacionPrincipalComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'registro' , component: RegistroComponent},
   {path: 'crear-producto' , component: ProductoCrearComponent},
   {path: 'user' , component: UsuarioComponent},
+  {path: 'crear-noticia' , component: CrearNoticiaComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

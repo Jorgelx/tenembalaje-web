@@ -28,5 +28,13 @@ export class ProductService {
   public save(producto: Product): Observable<any>{
     return this.httpClient.post<any>(this.url+ 'product/save/', producto);
   }
+
+  public borrar(id: number): Observable<any> {
+    return this.httpClient.delete<any>(this.url + `product/delete/${id}`)
+  }
+
+  public borrarTipo(id: number): Observable<any> {
+    return this.httpClient.delete<any>(this.url + `product/delete/tipo/${id}`)
+  }
 }
 

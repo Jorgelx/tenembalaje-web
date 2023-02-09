@@ -13,7 +13,7 @@
             <li class="nav-item"> <a class="nav-link" (click)="contacto()" onmouseover="" style="cursor: pointer;">
               {{ 'CONTACTO' | translate }} </a> </li>
             <li class="nav-item" *ngIf="isLogged"> <a class="nav-link" (click)="user()" onmouseover=""
-                style="cursor: pointer;"> Usuario </a></li>
+                style="cursor: pointer;"> {{nombreUsuario}} </a></li>
             <li class="nav-item" *ngIf="!isLogged"> <a class="nav-link" routerLink="/registro" onmouseover=""
                 style="cursor: pointer;">{{ 'REGISTRO' | translate }}</a></li>
           </ul>

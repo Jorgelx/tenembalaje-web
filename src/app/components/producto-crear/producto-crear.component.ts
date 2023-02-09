@@ -53,9 +53,7 @@ export class ProductoCrearComponent implements OnInit {
   }
 
 
-  private delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+
 
   crearProducto() {
 

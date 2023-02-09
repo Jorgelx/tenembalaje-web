@@ -35,6 +35,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { InicioTiposComponent } from './components/inicio-tipos/inicio-tipos.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
+import { CrearNoticiaComponent } from './components/crear-noticia/crear-noticia.component';
 
 
 
@@ -64,6 +65,7 @@ export function createTranslateLoader(http: HttpClient) {
     InicioTiposComponent,
     UsuarioComponent,
     UsuarioAdminComponent,
+    CrearNoticiaComponent,
   ],
   imports: [
     RouterModule,

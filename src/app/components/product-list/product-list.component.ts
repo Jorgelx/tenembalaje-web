@@ -16,14 +16,14 @@ export class ProductListComponent implements OnInit {
 
   @Input()
   tipoSelectIni!: string;
-
+  tipos: Tipo[] = [];
   products: Product[] = [];
   tipo: any = null;
   busqueda: Busqueda = {
     tipo: '',
     precio: null
   };
-  tipos: Tipo[] = [];
+
   isAdmin = false;
   roles: string[];
   isSelected = false;

@@ -53,15 +53,16 @@
               <label for="tipo"><h3>Tipo de producto:</h3></label>
             </div>
             <div *ngIf="isNewTipo" class="tipo">
+              <label for="tipo">Tipo:</label>
               <input type="text" class="form-control" id="tipo" name="tipo" [(ngModel)]="tipo">
               <div>
                 <label for="tipo">Tipo Ingles:</label>
               </div>
               <input type="text" class="form-control" id="tipoEng" name="tipoEng" [(ngModel)]="tipoEng">
               <label for="tipo">Descripcion:</label>
-              <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion">
+              <input type="text" class="form-control" id="tipoDescripcion" name="tipoDescripcion" [(ngModel)]="tipoDescripcion">
               <label for="tipo">Descripcion Ingles:</label>
-              <input type="text" class="form-control" id="descripcionEng" name="descripcionEng" [(ngModel)]="descripcionEng">
+              <input type="text" class="form-control" id="tipoDescripcionEng" name="tipoDescripcionEng" [(ngModel)]="tipoDescripcionEng">
               <label class="text" for="imagen2"><h4>Elige una imagen para el tipo:</h4></label>
               <input type="file" class="text" id="imagen2" #imagenInputFile2 (change)="onFileChange2($event)"
                 accept="image/png, image/jpeg, image/gif">

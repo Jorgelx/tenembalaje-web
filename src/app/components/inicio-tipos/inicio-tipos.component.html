@@ -1,7 +1,7 @@
 <div class="text-center mt-5 d-flex justify-content-around">
 
     <div class="row " >
-      <div class="col-md-6 mx-auto marco  mb-3 " *ngFor="let tipo of tipos">
+      <div class="col-md-4 mx-auto marco  mb-3 " *ngFor="let tipo of tipos">
         <!--
         <img class="img-fluid d-block mx-auto marcoImg " [src]="tipo.img" width="100%">
         <h1 *ngIf='langEs' class="mb-3">{{tipo.tipo}}</h1>
@@ -17,12 +17,16 @@
 <!--	<h1>{{tipo.tipo}}</h1>-->
 	<img [src]="tipo.img" alt="" />
 	<figcaption>
-		<h3>
-      {{tipo.tipo}}
-		</h3>
-		<p>{{tipo.descripcion}}</p>
-		<button  class="btn btn-success text-white btn-lg" [routerLink] = "['/product', tipo.tipo]">
+
+    <h3 *ngIf='langEs'>{{tipo.tipo}}</h3>
+    <h3 *ngIf='langEn'>{{tipo.tipoEng}}</h3>
+    <p *ngIf='langEs'>{{tipo.descripcion}}</p>
+		<p *ngIf='langEn'>{{tipo.descripcionEng}}</p>
+		<button *ngIf='langEs' class="btn btn-success text-white btn-lg" [routerLink] = "['/product', tipo.tipo]">
 			Ir a {{tipo.tipo}}
+		</button>
+    <button *ngIf='langEn' class="btn btn-success text-white btn-lg" [routerLink] = "['/product', tipo.tipo]">
+			Go to {{tipo.tipoEng}}
 		</button>
 	</figcaption>
 </figure>
